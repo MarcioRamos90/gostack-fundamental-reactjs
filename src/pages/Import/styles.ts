@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 import { shade } from 'polished';
 
 export const Container = styled.div`
@@ -23,7 +23,11 @@ export const ImportFileContainer = styled.section`
   padding: 64px;
 `;
 
-export const Footer = styled.section`
+interface ImportFileContainerProps {
+  disabled: boolean;
+}
+
+export const Footer = styled.section<ImportFileContainerProps>`
   margin-top: 36px;
   display: flex;
   align-items: center;
@@ -48,6 +52,10 @@ export const Footer = styled.section`
     padding: 15px 80px;
     border: 0;
     transition: background-color 0.2s;
+
+    ${props => props.disabled && css`
+      background: #ccc;
+    `}
 
     &:hover {
       background: ${shade(0.2, '#ff872c')};
